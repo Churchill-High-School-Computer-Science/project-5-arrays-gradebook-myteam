@@ -17,13 +17,46 @@ public class Gradebook {
     }
 
     public boolean changeGrade(String lastName, String assnName, int newGrade) {
+        int row = -1;
+        for (int i = 0; i < book.length; i++){
+        if (book[i][0].equals(lastName)){
+           row = i;
+           
+        }
+        
+    }
+    int column = -1; 
+      for (int x = 0; x < labels.length; x++){
+        if (labels[x].equals(assnName)){
+             column = x;
+        }
+      }
+        if (row != -1 && column != -1){
+            book[row][column] = Integer.toString(newGrade);
+            return true;
+        }
+       
         // Your code here
         return false;
     }
 
     public double findAssignmentAverage(String assnName) {
-        // Your code here
-        return -1;
+       int row = -1;
+       for (int i = 0; i < labels.length; i++){
+        if (labels[i].equals(assnName)){
+            row = i;
+        }
+       
+    }
+        double sum = 0;
+        for (int x = 0; x < book.length; x++){
+            sum += Integer.parseInt(book[x][row]);
+            
+            }
+           return sum/book.length;
+        
+        
+       
     }
 
     public double findStudentAverage(String lastName) {
